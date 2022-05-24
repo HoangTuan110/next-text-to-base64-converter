@@ -1,6 +1,13 @@
 import Head from 'next/head'
+import {useState} from 'react'
+
+// Thanks MDN!
+// https://developer.mozilla.org/en-US/docs/Glossary/Base64#solution_1_%E2%80%93_escaping_the_string_before_encoding_it
+const toBase64 = (s) => window.btoa(unescape(encodeURIComponent(s)))
 
 export default function Home() {
+  const [input, setInput] = useState('')
+
   return (
     <div className="container">
       <Head>
@@ -13,9 +20,8 @@ export default function Home() {
           Text to Base64 converter
         </h2>
 
-        <p className="description">
-          A simple text to Base64 converter.
-        </p>
+        <input type="text" placeholder="Enter your text here..." onChange={(e) => setInput(e.target.value)}/>
+        <input type="text" placeholder="Your result should show here..." disabled='' value={() => toBase64(input)}/>
       </main>
 
       <footer>
