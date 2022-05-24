@@ -8,6 +8,10 @@ const toBase64 = (s) => btoa(unescape(encodeURIComponent(s)))
 export default function Home() {
   const [input, setInput] = useState('')
 
+  const handleInputChange = (e) => {
+    setInput(e.target.value)
+  }
+
   return (
     <div className="container">
       <Head>
@@ -20,10 +24,8 @@ export default function Home() {
           Text to Base64 converter
         </h2>
 
-        <input type="text" placeholder="Enter your text here..." onChange={(e) => setInput(e.target.value)}/>
-        <input type="text" placeholder="Your result should show here..." readOnly={true}>
-          {toBase64(input)}
-        </input>
+        <input type="text" placeholder="Enter your text here..." onChange={handleInputChange}/>
+        <input type="text" placeholder="Your result should show here..." readOnly={true} value={toBase64(input)} onChange={handleInputChange}></input>
       </main>
 
       <footer>
