@@ -9,9 +9,9 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1 className="title">
+        <h2 className="title">
           Text to Base64 converter
-        </h1>
+        </h2>
 
         <p className="description">
           A simple text to Base64 converter.
